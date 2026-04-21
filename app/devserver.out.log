@@ -1,0 +1,17 @@
+
+> omkar-portfolio@1.0.0 dev
+> vite --host 0.0.0.0 --port 5173
+
+
+  [32m[1mVITE[22m v7.3.0[39m  [2mready in [0m[1m478[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://10.211.5.128:[1m5173[22m/[39m
+[2m1:03:30 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m1:03:51 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m
+[2m1:04:22 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/Navigation.tsx, /src/index.css[22m
+[2m1:04:55 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/HeroSection.tsx, /src/index.css[22m
+[2m1:05:19 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/HeroSection.tsx, /src/index.css[22m
+[2m1:05:48 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/FeaturedProjectSection.tsx, /src/index.css[22m
+[2m1:06:13 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/CTASection.tsx, /src/index.css[22m
+[2m1:06:47 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/Footer.tsx, /src/index.css[22m
