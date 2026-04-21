@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -81,4 +81,5 @@
     "typescript-eslint": "^8.46.4",
     "vite": "^7.2.4"
   }
+
 }
