@@ -1,294 +1,197 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Variables ───────────────────────────────────────────── */
 @layer base {
   :root {
-    --background: 250 18% 4%;
-    --foreground:  240 10% 97%;
-    --card:        250 15% 6%;
-    --card-foreground: 240 10% 97%;
-    --popover: 250 15% 6%;
-    --popover-foreground: 240 10% 97%;
-    --primary:   38 92% 50%;
-    --primary-foreground: 250 18% 4%;
-    --secondary: 265 68% 53%;
-    --secondary-foreground: 240 10% 97%;
-    --muted:     240 6% 15%;
-    --muted-foreground: 240 4% 46%;
-    --accent:    38 92% 50%;
-    --accent-foreground: 250 18% 4%;
+    --paper: #f3ebe1;
+    --ink: #1b1713;
+    --quiet: #6a6158;
+    --line: rgba(27, 23, 19, 0.12);
+    --copper: #b5542a;
+    --hotel: #c45c26;
+    --medicine: #1a7a78;
+    --agent: #3d3a86;
+
+    --background: 32 33% 92%;
+    --foreground: 30 14% 9%;
+    --card: 32 40% 96%;
+    --card-foreground: 30 14% 9%;
+    --popover: 32 40% 96%;
+    --popover-foreground: 30 14% 9%;
+    --primary: 18 62% 44%;
+    --primary-foreground: 32 40% 96%;
+    --secondary: 32 20% 88%;
+    --secondary-foreground: 30 14% 9%;
+    --muted: 32 16% 86%;
+    --muted-foreground: 30 8% 38%;
+    --accent: 18 62% 44%;
+    --accent-foreground: 32 40% 96%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border:    240 6% 12%;
-    --input:     240 6% 12%;
-    --ring:      38 92% 50%;
-    --radius:    0.625rem;
-
-    /* Prestige tokens */
-    --amber:         #F59E0B;
-    --amber-glow:    rgba(245, 158, 11, 0.18);
-    --violet:        #7C3AED;
-    --violet-glow:   rgba(124, 58, 237, 0.18);
-    --surface:       rgba(255,255,255,0.035);
-    --surface-strong:rgba(255,255,255,0.06);
-    --border-subtle: rgba(255,255,255,0.07);
-    --border-amber:  rgba(245,158,11,0.22);
-    --border-violet: rgba(124,58,237,0.22);
+    --border: 30 14% 82%;
+    --input: 30 14% 82%;
+    --ring: 18 62% 44%;
+    --radius: 0.75rem;
   }
-}
 
-/* ─── Base ────────────────────────────────────────────────── */
-@layer base {
-  * { @apply border-border; }
-  html { scroll-behavior: smooth; }
+  html[data-theme='hotel'] {
+    --paper: #140e0b;
+    --ink: #f6eadc;
+    --quiet: #cbb39a;
+    --line: rgba(246, 234, 220, 0.12);
+    --copper: #e08a4f;
+    --hotel: #e08a4f;
+    --background: 20 28% 6%;
+    --foreground: 32 48% 92%;
+  }
+
+  html[data-theme='medicine'] {
+    --paper: #071416;
+    --ink: #e7f4f3;
+    --quiet: #8fb3b3;
+    --line: rgba(231, 244, 243, 0.12);
+    --copper: #3ec8c0;
+    --medicine: #3ec8c0;
+    --background: 186 48% 6%;
+    --foreground: 174 40% 93%;
+  }
+
+  html[data-theme='ai'] {
+    --paper: #0b0a14;
+    --ink: #efeafc;
+    --quiet: #aea8c9;
+    --line: rgba(239, 234, 252, 0.12);
+    --copper: #d4b072;
+    --agent: #8b86d9;
+    --background: 248 28% 6%;
+    --foreground: 258 40% 94%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
 
   body {
-    @apply bg-cyber-dark text-cyber-text antialiased;
-    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Outfit, system-ui, sans-serif;
     overflow-x: hidden;
-    background-image:
-      radial-gradient(ellipse 80% 50% at 15% 8%,  rgba(124,58,237,0.13), transparent 55%),
-      radial-gradient(ellipse 70% 45% at 88% 90%, rgba(245,158,11,0.09), transparent 50%),
-      radial-gradient(ellipse 50% 35% at 50% 50%, rgba(124,58,237,0.04), transparent 60%),
-      linear-gradient(160deg, #07060C 0%, #0C0A18 50%, #09070E 100%);
-    background-attachment: fixed;
+    min-height: 100vh;
+    transition: background 0.45s ease, color 0.45s ease;
   }
 
-  h1,h2,h3,h4,h5,h6 { font-family: 'Space Grotesk', system-ui, sans-serif; }
-  code,pre           { font-family: 'IBM Plex Mono', monospace; }
+  h1,
+  h2,
+  h3,
+  .font-serif {
+    font-family: Fraunces, Georgia, serif;
+    font-optical-sizing: auto;
+  }
 
-  /* Custom scrollbar */
-  ::-webkit-scrollbar       { width: 4px; }
-  ::-webkit-scrollbar-track { background: #07060C; }
-  ::-webkit-scrollbar-thumb { background: rgba(245,158,11,0.35); border-radius: 4px; }
-  ::-webkit-scrollbar-thumb:hover { background: rgba(245,158,11,0.55); }
+  ::selection {
+    background: color-mix(in srgb, var(--copper) 35%, transparent);
+    color: var(--ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--copper);
+    outline-offset: 3px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--paper);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--ink) 22%, transparent);
+    border-radius: 8px;
+  }
 }
 
-/* ─── Components ──────────────────────────────────────────── */
 @layer components {
-
-  /* Layout */
-  .section-block     { @apply relative py-24 lg:py-32; }
-  .section-container { @apply max-w-6xl mx-auto px-6 lg:px-8; }
-  .section-eyebrow   { @apply flex items-center gap-3 mb-4; }
-
-  /* ── Glass Card ── */
-  .glass-card {
-    @apply relative rounded-2xl;
-    background: var(--surface);
-    border: 1px solid var(--border-subtle);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.06),
-      inset 0 -1px 0 rgba(0,0,0,0.25),
-      0 20px 60px rgba(0,0,0,0.50);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.15s ease;
+  .page-wrap {
+    @apply mx-auto w-full max-w-page px-6 lg:px-10;
   }
 
-  .glass-card:hover {
-    border-color: var(--border-amber);
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.08),
-      0 24px 70px rgba(0,0,0,0.55),
-      0 0 0 1px rgba(245,158,11,0.06),
-      0 0 40px rgba(245,158,11,0.06);
+  .kicker {
+    @apply font-mono text-[11px] uppercase tracking-[0.18em];
+    color: var(--quiet);
   }
 
-  .glass-card-strong {
-    @apply relative rounded-2xl;
-    background: var(--surface-strong);
-    border: 1px solid rgba(255,255,255,0.08);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.09),
-      0 28px 80px rgba(0,0,0,0.58);
+  .display {
+    font-family: Fraunces, Georgia, serif;
+    font-optical-sizing: auto;
+    letter-spacing: -0.035em;
+    line-height: 0.92;
   }
 
-  /* ── Shimmer border card ── */
-  .shimmer-card {
-    @apply glass-card;
+  .rule {
+    height: 1px;
+    background: var(--line);
+  }
+
+  .chip {
+    @apply rounded-full px-3 py-1 font-mono text-[11px] tracking-wide;
+    border: 1px solid var(--line);
+    color: var(--ink);
+  }
+
+  .scene-frame {
     position: relative;
     overflow: hidden;
+    border: 1px solid var(--line);
+    background: color-mix(in srgb, var(--ink) 4%, var(--paper));
   }
 
-  .shimmer-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(245,158,11,0.5) 30%,
-      rgba(255,255,255,0.7) 50%,
-      rgba(245,158,11,0.5) 70%,
-      transparent 100%
-    );
-    background-size: 200% 100%;
-    animation: shimmer 3s linear infinite;
-    -webkit-mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
+  .btn-solid {
+    @apply inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium;
+    background: var(--ink);
+    color: var(--paper);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  .btn-solid:hover {
+    transform: translateY(-1px);
+    opacity: 0.92;
   }
 
-  /* ── 3D Tilt ── */
-  .tilt-card {
-    transform-style: preserve-3d;
-    transform: perspective(900px) rotateX(0deg) rotateY(0deg) translateZ(0);
-    will-change: transform;
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    background: transparent;
+    transition: background 0.2s ease;
   }
-
-  /* ── Text gradients ── */
-  .text-gradient-cyan {
-    background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 45%, #D97706 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .btn-ghost:hover {
+    background: color-mix(in srgb, var(--ink) 6%, transparent);
   }
-
-  .text-gradient-gold-violet {
-    background: linear-gradient(135deg, #F59E0B 0%, #A78BFA 50%, #7C3AED 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  /* ── Grid overlay ── */
-  .grid-overlay {
-    background-image:
-      linear-gradient(rgba(245,158,11,0.022) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(245,158,11,0.022) 1px, transparent 1px);
-    background-size: 72px 72px;
-    mask-image: radial-gradient(ellipse 80% 80% at center, black 15%, transparent 90%);
-  }
-
-  /* ── Mono label ── */
-  .mono-label {
-    @apply text-xs font-medium tracking-[0.14em] uppercase;
-    font-family: 'IBM Plex Mono', monospace;
-  }
-
-  /* ── Buttons ── */
-  .btn-primary {
-    @apply px-6 py-3 rounded-xl font-semibold text-sm;
-    background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 60%, #D97706 100%);
-    color: #1C0A00;
-    box-shadow:
-      0 0 0 1px rgba(245,158,11,0.5),
-      0 8px 32px rgba(245,158,11,0.30),
-      inset 0 1px 0 rgba(255,255,255,0.55);
-    transition: all 0.25s ease;
-    cursor: pointer;
-  }
-
-  .btn-primary:hover {
-    box-shadow:
-      0 0 0 1px rgba(245,158,11,0.7),
-      0 12px 44px rgba(245,158,11,0.42),
-      inset 0 1px 0 rgba(255,255,255,0.55);
-    filter: brightness(1.08);
-  }
-
-  .btn-outline {
-    @apply px-6 py-3 rounded-xl font-medium text-sm;
-    color: rgba(248,248,255,0.88);
-    border: 1px solid rgba(255,255,255,0.14);
-    background: rgba(255,255,255,0.04);
-    transition: all 0.25s ease;
-    cursor: pointer;
-  }
-
-  .btn-outline:hover {
-    border-color: rgba(245,158,11,0.55);
-    background: rgba(245,158,11,0.08);
-    color: #FDE68A;
-    box-shadow: 0 8px 32px rgba(245,158,11,0.16);
-  }
-
-  /* ── Tech tag ── */
-  .tech-tag {
-    @apply px-3 py-1 rounded-lg text-xs font-medium;
-    font-family: 'IBM Plex Mono', monospace;
-    border: 1px solid rgba(245,158,11,0.16);
-    background: rgba(245,158,11,0.05);
-    color: rgba(245,158,11,0.75);
-    transition: all 0.2s ease;
-  }
-
-  .tech-tag:hover {
-    border-color: rgba(245,158,11,0.45);
-    color: #FDE68A;
-    background: rgba(245,158,11,0.10);
-  }
-
-  /* ── Cards ── */
-  .feature-card { @apply glass-card tilt-card p-5 cursor-default; }
-  .project-card { @apply glass-card tilt-card p-6 cursor-default; }
-
-  /* ── Divider ── */
-  .soft-divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(245,158,11,0.35), rgba(124,58,237,0.25), transparent);
-  }
-
-  /* ── Aurora blobs ── */
-  .aurora-blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(90px);
-    pointer-events: none;
-  }
-
-  /* ── Noise ── */
-  .noise-overlay {
-    position: fixed; inset: 0;
-    pointer-events: none; z-index: 1; opacity: 0.032;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-    background-size: 200px;
-    mix-blend-mode: overlay;
-  }
-
-  /* ── Spotlight cursor layer ── */
-  .spotlight {
-    position: fixed; inset: 0;
-    pointer-events: none; z-index: 3;
-    transition: opacity 0.3s ease;
-  }
-
-  /* ── Ring decoration ── */
-  .ring-deco {
-    border-radius: 50%;
-    border: 1px solid rgba(245,158,11,0.06);
-    position: absolute;
-    pointer-events: none;
-  }
-
-  /* ── Stat chip ── */
-  .stat-chip { @apply glass-card px-4 py-3 flex flex-col items-center justify-center; }
-  .glow-cyan { box-shadow: 0 0 40px rgba(245,158,11,0.12), 0 0 80px rgba(124,58,237,0.08); }
-  .section-pinned { @apply relative w-screen h-screen overflow-hidden; }
 }
 
-/* ─── Utilities ───────────────────────────────────────────── */
 @layer utilities {
-  .hide-scrollbar { -ms-overflow-style:none; scrollbar-width:none; }
-  .hide-scrollbar::-webkit-scrollbar { display:none; }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
 
-  .headline-shadow {
-    text-shadow:
-      0 0 60px rgba(245,158,11,0.18),
-      0 0 120px rgba(245,158,11,0.10),
-      0 0 200px rgba(124,58,237,0.08);
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

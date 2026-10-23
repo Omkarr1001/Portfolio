@@ -1,16 +1,17 @@
-# Omkar Salunkhe Portfolio
+# Omkar Salunkhe — portfolio
 
-A React + TypeScript + Vite portfolio website focused on backend engineering, POS/QSR systems, and product delivery work.
+React + TypeScript + Vite site. Three case-study worlds: hotel / restaurant operations, medicine delivery, and AI systems.
 
-## Tech Stack
+## Stack
 
 - React 19
 - TypeScript
 - Vite
 - Tailwind CSS
-- GSAP + ScrollTrigger
+- GSAP
+- React Router
 
-## Run Locally
+## Run locally
 
 ```bash
 npm install
@@ -24,8 +25,9 @@ npm run build
 npm run preview
 ```
 
-## Key Folders
+## Routes
 
-- `src/sections`: page sections
-- `src/components`: reusable UI components
-- `public/images`: static assets
+- `/` home
+- `/work/hotel` restaurant operations
+- `/work/medicine` ZepMed product (no private repo links)
+- `/work/ai` agent / workflow systems
